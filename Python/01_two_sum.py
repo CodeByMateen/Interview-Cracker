@@ -92,3 +92,94 @@ ________
 
 ⏱️ Time Complexity: O(n)
 📦 Space Complexity: O(1)
+
+=======================================================================
+=======================================================================
+
+A little Advance:----------
+
+✅ Option 1 — Return all index pairs
+________
+
+def allTwoSums(nums, target):
+    seen = {}
+    pairs = []
+    for i, num in enumerate(nums):
+        diff = target - num
+        if diff in seen:
+            pairs.append([seen[diff], i])
+        seen[num] = i
+    return pairs
+
+print(allTwoSums([1, 3, 5, 7, 9, 11, 14], 14))
+
+________ 🔹 Output: [[1, 5], [2, 4]]
+
+✅ Option 2 — Return all number pairs
+________
+
+def allTwoSums(nums, target):
+    seen = set()
+    pairs = []
+    for num in nums:
+        diff = target - num
+        if diff in seen:
+            pairs.append((diff, num))
+        seen.add(num)
+    return pairs
+
+print(allTwoSums([1, 3, 5, 7, 9, 11, 14], 14))
+
+________ 🔹 Output: [(3, 11), (5, 9)]
+
+💎 Final Clean Version — Unique Pairs (Numbers Only)
+________
+
+def allTwoSums(nums, target):
+    seen = set()
+    pairs = set()
+    for num in nums:
+        diff = target - num
+        if diff in seen:
+            # add pair in sorted order so (3,11) and (11,3) are treated same
+            pairs.add(tuple(sorted((diff, num))))
+        seen.add(num)
+    return list(pairs)
+
+
+print(allTwoSums([1, 3, 5, 7, 9, 11, 14, 3, 11, 5, 9], 14))
+
+________ 🔹 Output: [(3, 11), (5, 9)]
+
+⚙️ Two Pointer Method 
+________
+
+def twoPointerPairs(nums, target):
+    nums.sort()  # sort list first (important!)
+    left, right = 0, len(nums) - 1
+    pairs = []
+
+    while left < right:
+        total = nums[left] + nums[right]
+        if total == target:
+            pairs.append((nums[left], nums[right]))
+            # Move both pointers to avoid duplicates
+            left += 1
+            right -= 1
+            # skip duplicate values
+            while left < right and nums[left] == nums[left - 1]:
+                left += 1
+            while left < right and nums[right] == nums[right + 1]:
+                right -= 1
+        elif total < target:
+            left += 1
+        else:
+            right -= 1
+
+    return pairs
+
+
+print(twoPointerPairs([1, 3, 5, 7, 9, 11, 14, 3, 11, 5, 9], 14))
+
+________ 🔹 Output: [(3, 11), (5, 9)]
+
