@@ -1,7 +1,8 @@
 # Core Roadmap to Crack Remote Interviews
 
 ```prompt_code_for_hard_problems
-i find this program very diffeicult, can you make its sub programs which are easy and help me understand this complex project
+I find this program very difficult, can you make its sub programs which are easy and help me understand this complex project
+---> Refer to Crack 1.4 made simple
 ```
 
 ### Goal
