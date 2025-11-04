@@ -1,5 +1,9 @@
 # Core Roadmap to Crack Remote Interviews
 
+```prompt_code_for_hard_problems
+i find this program very diffeicult, can you make its sub programs which are easy and help me understand this complex project
+```
+
 ### Goal
 Gain real-world coding interview confidence for remote/non-FAANG companies (Turing, Clipboard, Motive, etc.)
 
