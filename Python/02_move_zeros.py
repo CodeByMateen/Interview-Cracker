@@ -10,36 +10,20 @@ Output: [1, 3, 12, 0, 0]
 
 -----------------------------------------------------------------------
 
-✅ Approach 1 — In-Place Using Two Pointers (Efficient)
-
-Idea:
-Use a pointer last_non_zero to track where the next non-zero element should go.
-
-Steps:
-
-Traverse array.
-
-If current number ≠ 0 → swap it with nums[last_non_zero] and increment last_non_zero.
+✅ Approach 1
 
 Code:
 ________
 
-def moveZeroes(nums):
-    result = [num for num in nums if num != 0]
-    zero_count = nums.count(0)
-    result.extend([0] * zero_count)
-    return result
-________
-
-Example walkthrough:
-
-________
-
-nums = [0, 1, 0, 3, 12]
-
-Step 1: i=1 → num=1 → swap with nums[0] → [1,0,0,3,12], last_non_zero=1  
-Step 2: i=3 → num=3 → swap with nums[1] → [1,3,0,0,12], last_non_zero=2  
-Step 3: i=4 → num=12 → swap with nums[2] → [1,3,12,0,0], last_non_zero=3 ✅
+def moveZeros(nums):
+    pos=0
+    for i in range(len(nums)):
+        if nums[i]!=0:
+            nums[pos], nums[i]= nums[i], nums[pos]
+            pos+=1
+    return nums
+    
+print(moveZeros([0, 1, 0, 3, 12]))
 ________
 
 -----------------------------------------------------------------------
